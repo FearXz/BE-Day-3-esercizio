@@ -10,6 +10,7 @@
         public BankAccount()
         {
             IsBankAccountOpen = CloseAccount();
+            AccountBalance = 0;
         }
 
         public bool OpenAccount()

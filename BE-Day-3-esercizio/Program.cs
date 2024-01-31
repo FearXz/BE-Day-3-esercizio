@@ -31,61 +31,63 @@ namespace BE_Day_3_esercizio
 
                     while (askOpenAccount != "y" && askOpenAccount != "n");
 
-                    if (askOpenAccount == "n")
+                    if (askOpenAccount == "y")
                     {
-                        Environment.Exit(0);
-                    }
+                        BankAccount myAccount = new BankAccount();
+                        Console.WriteLine("\nInserisci il tuo nome: \n");
+                        myAccount.Name = Console.ReadLine();
+                        Console.WriteLine("\nInserisci il tuo cognome \n");
+                        myAccount.Surname = Console.ReadLine();
 
-                    BankAccount myAccount = new BankAccount();
-                    Console.WriteLine("\nInserisci il tuo nome: \n");
-                    myAccount.Name = Console.ReadLine();
-                    Console.WriteLine("\nInserisci il tuo cognome \n");
-                    myAccount.Surname = Console.ReadLine();
+                        string chooseOperation;
+                        Console.WriteLine($"\nCiao {myAccount.Name} {myAccount.Surname} \n");
 
-                    string chooseOperation;
-                    Console.WriteLine($"\nCiao {myAccount.Name} {myAccount.Surname} \n");
-
-                    do
-                    {
-                        Console.WriteLine($"Il tuo saldo è pari a : {myAccount.AccountBalance} \n");
-                        Console.WriteLine("Che operazione vuoi effettuare ?\n");
-                        Console.WriteLine("premi P per prelevare\nPremi D per depositare\nPremi C per chiudere l'applicazione\n");
-                        chooseOperation = Console.ReadLine().ToLower();
-
-                        if (chooseOperation == "p")
+                        do
                         {
-                            Console.WriteLine("\ninserisci la cifra da prelevare");
-                            decimal withdrawalTry = Convert.ToDecimal(Console.ReadLine());
+                            Console.WriteLine($"Il tuo saldo è pari a : {myAccount.AccountBalance} \n");
+                            Console.WriteLine("Che operazione vuoi effettuare ?\n");
+                            Console.WriteLine("premi P per prelevare\nPremi D per depositare\nPremi C per chiudere l'applicazione\n");
+                            chooseOperation = Console.ReadLine().ToLower();
 
-                            if (withdrawalTry > myAccount.AccountBalance)
+                            if (chooseOperation == "p")
                             {
-                                Console.WriteLine("\nNon hai abbastanza soldi poveraccio\n");
-                                Console.ReadKey();
-                            }
-                            else
-                                myAccount.Withdrawal(withdrawalTry);
-                        }
-                        if (chooseOperation == "d")
-                        {
-                            Console.WriteLine("\ninserisci la cifra da depositare");
-                            decimal depositTry = Convert.ToDecimal(Console.ReadLine());
+                                Console.WriteLine("\ninserisci la cifra da prelevare");
+                                decimal withdrawalTry = Convert.ToDecimal(Console.ReadLine());
 
-                            if (depositTry < 1000)
-                            {
-                                Console.WriteLine("\nIl deposito minimo è 1000 euri\n");
-                                Console.ReadKey();
+                                if (withdrawalTry > myAccount.AccountBalance)
+                                {
+                                    Console.WriteLine("\nNon hai abbastanza soldi poveraccio\n");
+                                    Console.ReadKey();
+                                }
+                                else
+                                    myAccount.Withdrawal(withdrawalTry);
                             }
-                            else
-                                myAccount.Deposit(depositTry);
+                            if (chooseOperation == "d")
+                            {
+                                Console.WriteLine("\ninserisci la cifra da depositare");
+                                decimal depositTry = Convert.ToDecimal(Console.ReadLine());
+
+                                if (depositTry < 1000)
+                                {
+                                    Console.WriteLine("\nIl deposito minimo è 1000 euri\n");
+                                    Console.ReadKey();
+                                }
+                                else
+                                    myAccount.Deposit(depositTry);
+                            }
+                            if (chooseOperation == "c")
+                            {
+                                Console.Clear();
+                                break;
+                            }
+
                         }
-                        if (chooseOperation == "c")
-                        {
-                            Console.Clear();
-                            break;
-                        }
+                        while (chooseOperation != "C");
+
+
 
                     }
-                    while (chooseOperation != "C");
+                    else Console.Clear();
 
 
 
@@ -95,7 +97,7 @@ namespace BE_Day_3_esercizio
                 {
                     int arrayLength;
 
-                    do { Console.WriteLine("\nInserisci la dimenzione dell'array desiderata: "); }
+                    do { Console.WriteLine("\nInserisci la dimensione dell'array desiderata: "); }
                     while (!int.TryParse(Console.ReadLine(), out arrayLength));
 
                     string[] arrayNomi = new string[arrayLength];
@@ -122,7 +124,7 @@ namespace BE_Day_3_esercizio
                 {
                     int arrayLength;
 
-                    do { Console.WriteLine("\nInserisci la dimenzione dell'array desiderata: "); }
+                    do { Console.WriteLine("\nInserisci la dimensione dell'array desiderata: "); }
                     while (!int.TryParse(Console.ReadLine(), out arrayLength));
 
                     int[] arrayNumeri = new int[arrayLength];
