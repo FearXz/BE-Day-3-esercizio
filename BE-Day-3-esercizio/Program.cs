@@ -54,27 +54,35 @@ namespace BE_Day_3_esercizio
 
                         if (chooseOperation == "p")
                         {
-                            Console.WriteLine("inserisci la cifra da prelevare");
+                            Console.WriteLine("\ninserisci la cifra da prelevare");
                             decimal withdrawalTry = Convert.ToDecimal(Console.ReadLine());
 
                             if (withdrawalTry > myAccount.AccountBalance)
-                                Console.WriteLine("Non hai abbastanza soldi poveraccio\n");
+                            {
+                                Console.WriteLine("\nNon hai abbastanza soldi poveraccio\n");
+                                Console.ReadKey();
+                            }
                             else
                                 myAccount.Withdrawal(withdrawalTry);
                         }
                         if (chooseOperation == "d")
                         {
-                            Console.WriteLine("inserisci la cifra da depositare");
+                            Console.WriteLine("\ninserisci la cifra da depositare");
                             decimal depositTry = Convert.ToDecimal(Console.ReadLine());
 
                             if (depositTry < 1000)
-                                Console.WriteLine("Il deposito minimo è 1000 euri\n");
+                            {
+                                Console.WriteLine("\nIl deposito minimo è 1000 euri\n");
+                                Console.ReadKey();
+                            }
                             else
                                 myAccount.Deposit(depositTry);
                         }
                         if (chooseOperation == "c")
+                        {
+                            Console.Clear();
                             break;
-                        // Environment.Exit(0);
+                        }
 
                     }
                     while (chooseOperation != "C");
@@ -105,6 +113,9 @@ namespace BE_Day_3_esercizio
                     else
                         Console.WriteLine($"Il nome {nomeDaCercare} non è contenuto nell'array");
 
+                    Console.ReadKey();
+                    Console.Clear();
+
                 }
 
                 if (sceltaEsercizio == 3)
@@ -127,6 +138,9 @@ namespace BE_Day_3_esercizio
                     double media = arrayNumeri.Average();
 
                     Console.WriteLine($"La somma dei numeri è: {somma}\nLa media aritmetica è: {media}");
+
+                    Console.ReadKey();
+                    Console.Clear();
 
                 }
 
