@@ -13,10 +13,10 @@ namespace BE_Day_3_esercizio
             {
                 do
                 {
-                    do { Console.WriteLine("Scegli l'esercizio giornaliero \n1) BankAccount\n2) Crea e popola array\n3) Somma e media di array\n"); }
+                    do { Console.WriteLine("\nScegli l'esercizio giornaliero \n1) BankAccount\n2) Crea e popola array\n3) Somma e media di array\n4) per chiudere l'app\n"); }
                     while (!int.TryParse(Console.ReadLine(), out sceltaEsercizio));
 
-                } while (sceltaEsercizio != 1 && sceltaEsercizio != 2 && sceltaEsercizio != 3);
+                } while (sceltaEsercizio != 1 && sceltaEsercizio != 2 && sceltaEsercizio != 3 && sceltaEsercizio != 4);
 
                 if (sceltaEsercizio == 1)
                 {
@@ -25,7 +25,7 @@ namespace BE_Day_3_esercizio
 
                     do
                     {
-                        Console.WriteLine("Vuoi aprire un conto corrente ? y/n ");
+                        Console.WriteLine("\nVuoi aprire un conto corrente ? y/n ");
                         askOpenAccount = Console.ReadLine();
                     }
 
@@ -87,7 +87,7 @@ namespace BE_Day_3_esercizio
                 {
                     int arrayLength;
 
-                    do { Console.WriteLine("Inserisci la dimenzione dell'array desiderata: "); }
+                    do { Console.WriteLine("\nInserisci la dimenzione dell'array desiderata: "); }
                     while (!int.TryParse(Console.ReadLine(), out arrayLength));
 
                     string[] arrayNomi = new string[arrayLength];
@@ -105,17 +105,13 @@ namespace BE_Day_3_esercizio
                     else
                         Console.WriteLine($"Il nome {nomeDaCercare} non è contenuto nell'array");
 
-                    Console.ReadKey();
-
-
-
                 }
 
                 if (sceltaEsercizio == 3)
                 {
                     int arrayLength;
 
-                    do { Console.WriteLine("Inserisci la dimenzione dell'array desiderata: "); }
+                    do { Console.WriteLine("\nInserisci la dimenzione dell'array desiderata: "); }
                     while (!int.TryParse(Console.ReadLine(), out arrayLength));
 
                     int[] arrayNumeri = new int[arrayLength];
@@ -131,11 +127,10 @@ namespace BE_Day_3_esercizio
                     double media = arrayNumeri.Average();
 
                     Console.WriteLine($"La somma dei numeri è: {somma}\nLa media aritmetica è: {media}");
-                    Console.ReadKey();
 
                 }
 
-                else Environment.Exit(0);
+                else if (sceltaEsercizio == 4) break;
             }
 
             while (sceltaEsercizio == 1 || sceltaEsercizio == 2 || sceltaEsercizio == 3);
